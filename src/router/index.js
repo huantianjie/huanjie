@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Community from '../views/Community.vue'
 import ComPost from '../components/ComPost'
+import HotEvents from '../components/HotEvents'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/compost',
     name: 'compost',
     component: ComPost
+  },
+  {
+    path: '/hotevents',
+   
+    component: HotEvents
   },
   {
     path: '/about',

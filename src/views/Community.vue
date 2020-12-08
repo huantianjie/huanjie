@@ -76,6 +76,8 @@
             <!-- 狗哥说事结束 -->
             <!-- 社区评论 -->
             <com-post></com-post>
+            <!-- 热门活动 -->
+
           </mt-tab-container-item>
           <mt-tab-container-item id="gz">
             <div class="leave_top">
