@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Community from '../views/Community.vue'
 import ComPost from '../components/ComPost'
 import HotEvents from '../components/HotEvents'
+import Scoll from '../components/Scoll'
+import HotTag from '../components/HotTag'
 
 Vue.use(VueRouter)
 
@@ -13,14 +15,14 @@ const routes = [
     component: Community
   },
   {
-    path: '/compost',
-    name: 'compost',
-    component: ComPost
+    path: '/scoll',
+   
+    component: Scoll
   },
   {
-    path: '/hotevents',
+    path: '/hottag',
    
-    component: HotEvents
+    component: HotTag
   },
   {
     path: '/about',

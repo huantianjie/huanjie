@@ -6,6 +6,7 @@
         <img src="/img/detail_right_arrow.png" alt="" />
       </router-link>
     </div>
+    <div>
     <div class="wrapper" ref="wrapper">
       <ul class="content">
         <div class="hotEventsImg" v-for="(img, i) of images" :key="i">
@@ -16,6 +17,8 @@
         <router-link to="/" class="hotEventsMore">更多</router-link>
       </ul>
     </div>
+    </div>
+    <div v-for="n of 80" :key="n">{{n}}</div>
   </div>
 </template>
 
@@ -32,12 +35,11 @@ export default {
       ],
     };
   },
-  name: "hotEvents",
+name: "hotEvents",
   mounted() {
     const options = {
       scrollY: false,
       scrollX: true, // 因为scrollY默认为true，其实可以省略
-      click: true,
     };
 
     this.scroll = new BScroll(this.$refs.wrapper, options);
@@ -46,9 +48,6 @@ export default {
 </script>
 
 <style>
-.hotEvents{
-  position: relative;
-}
 .hotEvents .hotHead{
   position: relative;
 }
@@ -61,14 +60,12 @@ export default {
   width: 0.186rem;
   height: 0.293rem;
   position: absolute;
-  margin-top: -0.147rem;
-  top: 50% !important;
+  top: 0;
   right: 5%;
 }
 .hotEvents .hotMore img{
 width: 100%;
 height: 100%;
-display: block;
 }
 .hotEvents .wrapper {
   box-sizing: border-box;
@@ -84,7 +81,6 @@ display: block;
 .hotEvents .content .hotEventsImg {
   padding-left: 0;
   width: 9rem;
-  padding-right: 5px;
 }
 .hotEvents .eventsLink {
   display: block;
@@ -107,5 +103,4 @@ display: block;
   width: 5%;
   line-height: 3rem;
 }
-
 </style>

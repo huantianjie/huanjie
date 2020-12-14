@@ -33,52 +33,55 @@
             /></router-link>
           </div>
         </div>
-        <mt-tab-container v-model="active" swipeable>
-          <mt-tab-container-item id="tj">
-            <!-- 轮播图 -->
-            <van-swipe :autoplay="3000" class="leave_top">
-              <van-swipe-item v-for="(image, index) in images" :key="index">
-                <img class="swipe_img" v-lazy="image" />
-              </van-swipe-item>
-            </van-swipe>
-            <!-- 社区图标 -->
-            <van-grid :border="false" :column-num="5" class="tab_entry">
-              <van-grid-item to="/about">
-                <van-image src="/img/shuijing.png" />
-                <p>签到</p>
-              </van-grid-item>
-              <van-grid-item to="/about">
-                <van-image src="/img/wenda.png" />
-                <p>问答</p>
-              </van-grid-item>
-              <van-grid-item to="/about">
-                <van-image src="/img/ceping.png" />
-                <p>测评</p>
-              </van-grid-item>
-              <van-grid-item to="/about">
-                <van-image src="/img/huati.png" />
-                <p>话题</p>
-              </van-grid-item>
-              <van-grid-item to="/about">
-                <van-image src="/img/daren.png" />
-                <p>达人</p>
-              </van-grid-item>
-            </van-grid>
-            <!-- 狗哥说事 -->
-            <van-grid direction="horizontal" :column-num="1" class="report">
-              <van-grid-item
-                icon="https://api.boqiicdn.com/600cc8094e2f8a6e74fa0466db3ad901.png"
-                text="我家猫，在我眼皮子底下消失了……"
-                to="/about"
-              />
-              <img src="/img/boqii_head_line_more.png" class="report_img" />
-            </van-grid>
-            <!-- 狗哥说事结束 -->
-            <!-- 社区评论 -->
-            <com-post></com-post>
-            <!-- 热门活动 -->
+        <div v-show="active == 'tj'">
+          <!-- 轮播图 -->
+          <van-swipe :autoplay="3000" class="leave_top">
+            <van-swipe-item v-for="(image, index) in images" :key="index">
+              <img class="swipe_img" v-lazy="image" />
+            </van-swipe-item>
+          </van-swipe>
+          <!-- 社区图标 -->
+          <van-grid :border="false" :column-num="5" class="tab_entry">
+            <van-grid-item to="/about">
+              <van-image src="/img/shuijing.png" />
+              <p>签到</p>
+            </van-grid-item>
+            <van-grid-item to="/about">
+              <van-image src="/img/wenda.png" />
+              <p>问答</p>
+            </van-grid-item>
+            <van-grid-item to="/about">
+              <van-image src="/img/ceping.png" />
+              <p>测评</p>
+            </van-grid-item>
+            <van-grid-item to="/about">
+              <van-image src="/img/huati.png" />
+              <p>话题</p>
+            </van-grid-item>
+            <van-grid-item to="/about">
+              <van-image src="/img/daren.png" />
+              <p>达人</p>
+            </van-grid-item>
+          </van-grid>
+          <!-- 狗哥说事 -->
+          <van-grid direction="horizontal" :column-num="1" class="report">
+            <van-grid-item
+              icon="https://api.boqiicdn.com/600cc8094e2f8a6e74fa0466db3ad901.png"
+              text="我家猫，在我眼皮子底下消失了……"
+              to="/about"
+            />
+            <img src="/img/boqii_head_line_more.png" class="report_img" />
+          </van-grid>
+          <!-- 狗哥说事结束 -->
+          <!-- 社区评论 -->
+          <com-post></com-post>
+          <!-- 热门活动 -->
+          <hot-events></hot-events>
+          <com-post></com-post>
+          <div class="leave_bottom"></div>
+        </div>
 
-          </mt-tab-container-item>
+        <mt-tab-container v-model="active" swipeable>
           <mt-tab-container-item id="gz">
             <div class="leave_top">
               <div>关注社区信息</div>
@@ -164,16 +167,16 @@
         <img class="tabimg" src="/img/tab_profile_nor.png" v-else />
       </mt-tab-item>
     </mt-tabbar>
-    
   </div>
 </template>
 
 <script>
 import Swiper from "swiper";
-import ComPost from '../components/ComPost.vue';
+import ComPost from "../components/ComPost.vue";
+import HotEvents from "../components/HotEvents.vue";
 
 export default {
-  components: { ComPost },
+  components: { ComPost, HotEvents },
   data() {
     return {
       value: "",
@@ -205,7 +208,7 @@ export default {
       this.active = id;
     },
   },
-
+  watch: {},
 };
 </script>
 
@@ -384,9 +387,6 @@ export default {
 /* 狗哥说事结束 */
 /* 社区评论 */
 
-
-
-
 /* 底部导航栏 */
 .community .tabimg {
   width: 0.693rem;
@@ -431,6 +431,9 @@ export default {
   position: absolute;
   top: -35%;
   left: 50%;
+}
+.community .leave_bottom {
+  margin-bottom: 2.68rem;
 }
 </style>
 
